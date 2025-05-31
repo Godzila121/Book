@@ -11,7 +11,14 @@
     </div>
     <div>
       <label for="rating">Оцінка (1-5):</label>
-      <input type="number" id="rating" v-model.number="book.rating" min="1" max="5" required />
+      <input
+        type="number"
+        id="rating"
+        v-model.number="book.rating"
+        min="1"
+        max="5"
+        required
+      />
     </div>
     <div>
       <label for="genre">Жанр (необов'язково):</label>
@@ -27,31 +34,31 @@
 
 <script>
 export default {
-  name: 'BookForm',
+  name: "BookForm",
   data() {
     return {
       book: {
-        title: '',
-        author: '',
+        title: "",
+        author: "",
         rating: null,
-        genre: '',
-        review: ''
-      }
+        genre: "",
+        review: "",
+      },
     };
   },
   methods: {
     handleSubmit() {
       // Тут ми будемо викликати подію, щоб передати дані книги батьківському компоненту
-      this.$emit('add-book', { ...this.book });
+      this.$emit("add-book", { ...this.book });
 
       // Очистити форму після відправки
-      this.book.title = '';
-      this.book.author = '';
+      this.book.title = "";
+      this.book.author = "";
       this.book.rating = null;
-      this.book.genre = '';
-      this.book.review = '';
-    }
-  }
+      this.book.genre = "";
+      this.book.review = "";
+    },
+  },
 };
 </script>
 
