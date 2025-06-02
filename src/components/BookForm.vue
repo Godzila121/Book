@@ -48,10 +48,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      // Тут ми будемо викликати подію, щоб передати дані книги батьківському компоненту
       this.$emit("add-book", { ...this.book });
 
-      // Очистити форму після відправки
       this.book.title = "";
       this.book.author = "";
       this.book.rating = null;
@@ -82,14 +80,14 @@ export default {
 .book-form input[type="text"],
 .book-form input[type="number"],
 .book-form textarea {
-  width: calc(100% - 22px); /* Враховуємо padding та border інпутів */
+  width: calc(100% - 22px);
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Дозволяє padding не збільшувати загальну ширину */
+  box-sizing: border-box;
 }
 .book-form button {
-  background-color: #42b983; /* Зелений Vue */
+  background-color: #42b983;
   color: white;
   padding: 10px 15px;
   border: none;

@@ -17,11 +17,8 @@
   </div>
 </template>
 <script>
-import { auth } from "../firebaseConfig"; // Імпортуємо auth
+import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-// Якщо плануєте одразу створювати документ користувача в Firestore:
-// import { db } from '../firebaseConfig';
-// import { doc, setDoc } from "firebase/firestore";
 
 export default {
   name: "RegistrationForm",
@@ -53,25 +50,9 @@ export default {
         console.log("Користувача успішно зареєстровано:", user);
         this.successMessage = `Користувача ${user.email} успішно зареєстровано! Тепер ви можете увійти.`;
 
-        // Опціонально: Створення документа для користувача в Firestore
-        // try {
-        //   await setDoc(doc(db, "Users", user.uid), {
-        //     email: user.email,
-        //     createdAt: new Date() // Або serverTimestamp() з Firestore
-        //     // Тут можна додати інші початкові дані для користувача
-        //   });
-        //   console.log("Документ користувача створено в Firestore з ID:", user.uid);
-        // } catch (dbError) {
-        //   console.error("Помилка створення документа користувача в Firestore:", dbError);
-        //   this.errorMessage = "Акаунт створено, але виникла помилка при збереженні даних користувача.";
-        // }
-
-        // Очистити форму
         this.email = "";
         this.password = "";
 
-        // Можна емітувати подію для перенаправлення на сторінку логіну або автоматичного входу
-        // this.$emit('registered');
       } catch (error) {
         console.error("Помилка реєстрації:", error);
         if (error.code === "auth/email-already-in-use") {
@@ -111,7 +92,7 @@ export default {
   border-radius: 4px;
 }
 .registration-form button {
-  background-color: #28a745; /* Зелений */
+  background-color: #28a745;
   color: white;
   padding: 10px 15px;
   border: none;
